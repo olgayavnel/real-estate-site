@@ -13,12 +13,14 @@ import {
 const Section = styled.section`
   background: #000d1a;
   color: #fff;
-  padding: 3rem 0rem;
+  padding: 3rem calc((100vw - 1300px) / 2);
+  width: 100%;
+  min-height: 600px;
 `;
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  padding: 3rem 2rem;
+  padding: 2rem;
 `;
 const FooterTop = styled.div`
   display: flex;
@@ -29,21 +31,49 @@ const FooterTop = styled.div`
     flex-direction: column;
   }
 `;
-const FooterBottom = styled.div`
-  display: flex;
-  padding: 3rem 0rem;
+const Quote = styled.div`
+  flex: 1;
+  padding: 2rem 0rem;
+
+  h3 {
+    font-size: clamp(2rem, 8vw, 5rem);
+  }
 `;
-const Quote = styled.div``;
 
 const InfoWrap = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 2rem;
+  line-height: 3;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem 0rem;
+  }
 `;
+
+const FooterBottom = styled.div`
+  display: flex;
+  padding: 2rem 0rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
 const SocialIcons = styled.div`
   display: flex;
-  flex-direction: row;
+  width: 50%;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
 `;
-const Contact = styled.div``;
 
 const Icons = css`
   font-size: clamp(1rem, 6vw, 2rem);
@@ -67,13 +97,27 @@ const Youtube = styled(FaYoutube)`
   ${Icons}
 `;
 
+const Contact = styled.div`
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
+`;
+
 const Footer = () => {
   return (
     <Section>
       <Container>
         <FooterTop>
           <Quote>
-            <h3>Let's find your dream home</h3>
+            <h3>
+              Let's find <br /> your Dream Home
+            </h3>
           </Quote>
           <InfoWrap>
             <h4>Contact Us</h4>

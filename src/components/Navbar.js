@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components/macro';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { menuData } from '../data/MenuData';
 import { Button } from './Button';
 import { FaBars } from 'react-icons/fa';
@@ -15,7 +15,6 @@ const Nav = styled.nav`
   justify-content: space-between;
   padding: 1rem 2rem;
   z-index: 100;
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 `;
 
 const NavLink = css`
@@ -70,22 +69,23 @@ const NavBtn = styled.div`
 `;
 
 const Navbar = ({ toggle }) => {
-  const [headerColor, setHeaderColor] = useState('');
+  const [navbar, setNavbar] = useState('');
+  const location = useLocation();
 
   const listenToScrollEvent = () => {
-    window.scrollY > NAV_HEIGHT_PX
-      ? setHeaderColor('#CD853F')
-      : setHeaderColor('');
+    window.scrollY > NAV_HEIGHT_PX ? setNavbar(true) : setNavbar(false);
   };
 
   useEventListener('scroll', listenToScrollEvent);
 
+  let style = {
+    backgroundColor:
+      navbar || location.pathname !== '/' ? '#CD853F' : 'transparent',
+    transition: '0.4s',
+  };
+
   return (
-    <Nav
-      style={{
-        backgroundColor: headerColor,
-      }}
-    >
+    <Nav style={style}>
       <Logo to='/'>ELIXR</Logo>
       <MenuBars onClick={toggle} />
       <NavMenu>

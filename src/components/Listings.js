@@ -87,10 +87,22 @@ const Listings = ({
     <Section>
       <Container>
         <Heading>
-          <h1>{heading}</h1>
+          <h1
+            data-aos='fade-right'
+            data-aos-duration='1000'
+            data-aos-once='true'
+            data-aos-anchor-placement='center bottom'
+          >
+            {heading}
+          </h1>
         </Heading>
         <InfoRow>
-          <InfoWrap>
+          <InfoWrap
+            data-aos='zoom-out-up'
+            data-aos-duration='1200'
+            data-aos-once='true'
+            data-aos-anchor-placement='center bottom'
+          >
             <Image src={image} alt='home' />
             <h2>{subheading}</h2>
             <InfoLink to='/homes'>
@@ -98,7 +110,12 @@ const Listings = ({
               <Arrow />
             </InfoLink>
           </InfoWrap>
-          <InfoWrap>
+          <InfoWrap
+            data-aos='zoom-out-down'
+            data-aos-duration='1200'
+            data-aos-once='true'
+            data-aos-anchor-placement='center bottom'
+          >
             <Image
               src={image2}
               alt='home'
